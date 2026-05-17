@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SignalKYC - Autonomous Onboarding Risk Investigation</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="header-content">
+                <h1>🔍 SignalKYC</h1>
+                <p class="tagline">Autonomous Onboarding Risk Investigation Agent</p>
+            </div>
+        </header>
+
+        <main class="main-grid">
+            <!-- Dashboard / Case Intake -->
+            <section class="dashboard">
+                <h2>Case Intake</h2>
+                <div class="case-selector">
+                    <label for="case-select">Select Case:</label>
+                    <select id="case-select" onchange="loadCase(this.value)">
+                        <option value="">-- Choose a case --</option>
+                        <option value="app_clean_001">Alice Johnson (Clean) </option>
+                        <option value="app_suspicious_001">Bob Smith (High Risk)</option>
+                        <option value="app_suspicious_002">Carol Davis (Device Reuse)</option>
+                        <option value="app_verified_002">Frank Chen (Clean)</option>
+                    </select>
+                </div>
+                <button class="btn btn-primary" onclick="loadCase(document.getElementById('case-select').value)">
+                    Load & Investigate
+                </button>
+            </section>
+
+            <!-- Applicant Detail / Investigation View -->
+            <section class="case-detail">
+                <h2>Applicant Information</h2>
+                <div id="applicant-info" class="applicant-card">
+                    <p class="placeholder">Select a case to begin investigation</p>
+                </div>
+            </section>
+
+            <!-- Risk Signals Panel -->
+            <section class="signals-panel">
+                <h2>Triggered Risk Signals</h2>
+                <div id="signals-list" class="signals-container">
+                    <p class="placeholder">Signals will appear here after investigation</p>
+                </div>
+            </section>
+
+            <!-- Decision Panel -->
+            <section class="decision-panel">
+                <h2>Decision & Recommendation</h2>
+                <div id="decision-display" class="decision-card">
+                    <p class="placeholder">Decision pending...</p>
+                </div>
+            </section>
+
+            <!-- Graph Relationship View -->
+            <section class="graph-view">
+                <h2>Linked Entities</h2>
+                <div id="entities-list" class="entities-container">
+                    <p class="placeholder">Entity relationships will appear here</p>
+                </div>
+            </section>
+
+            <!-- Historical Similar Cases -->
+            <section class="historical-panel">
+                <h2>Similar Historical Cases</h2>
+                <div id="historical-list" class="historical-container">
+                    <p class="placeholder">Similar cases will appear here</p>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <p>SignalKYC © 2026 JacHacks Spring | Jac-native fintech agent</p>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
