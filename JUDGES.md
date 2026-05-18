@@ -10,8 +10,8 @@
 The frontend runs completely offline with a full investigation simulation. No backend required.
 
 ```bash
-git clone https://github.com/your-team/signalkyc.git
-cd signalkyc/Frontend
+git clone https://github.com/stealthwhizz/SignalKYC.git
+cd signalKYC/Frontend
 npm install
 npm run dev
 ```
