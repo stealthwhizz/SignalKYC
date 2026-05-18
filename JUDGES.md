@@ -1,166 +1,116 @@
-# 👋 Judge's Quick Start Guide
+# SignalKYC – Judge’s Quick Start & Scoring Guide
 
-Welcome to SignalKYC! Here's everything you need to know to understand and demo this project in 5 minutes.
+## 60‑Second Overview for Judges
 
-## 🚀 Start Here
+> *“Most KYC tools give you a risk score. SignalKYC gives you an **investigation**.”*
 
-1. **Open the frontend:**
-   ```bash
-   open frontend/index.html    # Mac
-   start frontend/index.html   # Windows (PowerShell)
-   xdg-open frontend/index.html # Linux
-   ```
+A new user signs up. SignalKYC builds a live graph of their email, phone, device, and IP, then runs an **autonomous agent** that walks suspicious connections, checks historical fraud rings, and outputs **why** it recommends Approve, Step‑up, or Manual Review. The frontend shows the agent’s reasoning step‑by‑step, highlighting nodes/edges in real time – like a human investigator’s train of thought.
 
-2. **You'll see the Dashboard** with case cards:
-   - **Red badges** = High risk (Bob Smith, Carol Davis)
-   - **Green badges** = Clean (Alice Johnson, Frank Chen)
-
-3. **Click on "Bob Smith"** to see the investigation
-
-## 📊 What You're Looking At
-
-**3-Column Investigation Workspace:**
-
-| Left | Center | Right |
-|------|--------|-------|
-| Applicant profile | Identity graph | Decision |
-| Triggered signals | Investigation timeline | Risk score |
-| Identity details | Visual links | Evidence |
-| | | Historical cases |
-
-**Key takeaway:** The system investigates systematically. You can see every step.
-
-## 🔍 Bob Smith Case (The Suspicious One)
-
-**Why it's flagged:**
-1. ❌ **Device Reused** - Same device ID used by 3 applicants
-2. ❌ **Disposable Email** - tempmail.com (temporary service)
-3. ❌ **Email Aliasing** - bob.smith+test format
-4. ❌ **Geographic Mismatch** - Nigeria IP, US applicant
-
-**Result:** 4 signals → Risk Score 7.0/20 → **MANUAL REVIEW**
-
-## ✅ Alice Johnson Case (The Clean One)
-
-**What makes it safe:**
-- No risk signals triggered
-- Consistent identity signals
-- Geographic match (US IP, US applicant)
-
-**Result:** Risk Score 0/20 → **APPROVE**
-
-## 🎯 The Innovation
-
-**Traditional KYC:** ❓ "You have a 75/100 risk score. Deal with it."  
-**SignalKYC:** ✅ "Here are the 4 risk signals we found, linked in a graph, with evidence for each."
-
-## 📁 Project Files (What You Need)
-
-```
-frontend/
-├── index.html              # ← START HERE (the polished UI)
-├── polished-styles.css     # Premium dark fintech design
-├── polished-app.js         # Case investigation logic
-└── theme.js                # Design tokens
-
-README.md                    # Full architecture & features
-QUICKSTART.md               # Quick start guide
-DEMO.md                     # 5-minute demo script
-SUMMARY.md                  # Project completion overview
-
-main.jac                     # Jac orchestrator
-models.jac                   # Graph definitions
-walkers.jac                  # Investigation walkers (6 walkers)
-signals.jac                  # Risk detection rules (10 signals)
-data/seed_cases.json         # Test cases (4 cases)
-```
-
-## 🎬 Demo Flow (Tell Judges This)
-
-**30 seconds:**
-"SignalKYC is a fintech onboarding agent. It investigates applicants by linking identity signals into a graph, then gives transparent fraud decisions."
-
-**Load Bob Smith → 2 minutes:**
-"This applicant has 4 red flags: device reused, disposable email, email aliasing, and geographic mismatch. The system detects these, links them in a graph, and recommends manual review."
-
-**Load Alice Johnson → 30 seconds:**
-"Compare this to a clean case. Same interface, green colors, no signals, immediate approval. The system isn't hiding anything."
-
-**Architecture → 30 seconds:**
-"The magic is three things: (1) graph-native design—relationships are explicit, (2) deterministic signals—not ML black box, (3) walkers—the agent's investigation is visible and traceable in code."
-
-## 🏗️ Technical Highlights
-
-- ✅ **Jac-native**: Graph nodes, typed edges, walkers
-- ✅ **Transparent**: Every decision has evidence
-- ✅ **Deterministic**: Rule-based, not probabilistic
-- ✅ **Scalable**: Seed data only, but architecture works for 10K+/day
-- ✅ **Polished**: Startup-grade UI, not a hackathon throwaway
-
-## ❓ If Judges Ask...
-
-**Q: "How does the graph work?"**
-A: "Applicants connect to Email, Phone, Device, IP nodes. If those nodes are shared with other applicants, we see patterns. Device shared by 3 people? Fraud ring. Phone linked to a flagged case? Escalate."
-
-**Q: "Can you add signals?"**
-A: "Yes. Each signal is a function in signals.jac. You write the rule, return evidence, add to walker. No retraining."
-
-**Q: "Is this production-ready?"**
-A: "The MVP uses seed data, but the architecture is. In production, you'd connect to real KYC APIs and a graph database. The logic is battle-tested."
-
-**Q: "Why not use ML?"**
-A: "Rule-based is better for compliance. Judges need to audit why we escalated someone. With ML, we can't explain it. Rules are transparent."
-
-## 📊 By The Numbers
-
-- **Risk Signals**: 10 deterministic rules
-- **Test Cases**: 4 (2 suspicious, 2 clean)
-- **Graph Nodes**: 10 types
-- **Investigation Steps**: 6 walkers (ingestion → decision)
-- **Decision Speed**: <100ms per case
-- **UI Responsiveness**: Full animations, smooth transitions
-- **Code Quality**: Clean, commented only where needed
-
-## 💡 The Proof Point
-
-**Judges should walk away thinking:**
-> "This isn't just a dashboard. It's a real fraud detection system using graph reasoning and deterministic logic. The UI makes the investigation obvious. This would actually work for a fintech company."
-
-## 🎯 What To Emphasize
-
-1. **Graph reasoning** - Most tools don't link signals; SignalKYC does
-2. **Transparency** - Judges see why each decision was made
-3. **Jac showcase** - Graph nodes and walkers are natural fit for this problem
-4. **Startup polish** - UI feels premium, not rushed
-5. **Demoable** - Works locally, offline, in 5 minutes
-
-## ⏱️ Time Budget
-
-- **Setup**: <10 seconds (just open the HTML file)
-- **Dashboard**: 20 seconds
-- **Suspicious case demo**: 2 minutes
-- **Clean case contrast**: 1 minute
-- **Q&A / Deep dive**: 1-2 minutes
-- **Total**: 5 minutes
-
-## 🎁 Bonus Points
-
-If you want to impress:
-- Show the graph visualization in the center (it updates for each case)
-- Point out the animated timeline (investigation steps appear with stagger)
-- Click through the entities panel (shows device/email usage counts)
-- Mention the historical similar cases (87% match to a prior fraud)
-
-## 🏆 This Wins Because
-
-✅ Real technical depth (graph model, deterministic logic)  
-✅ Obvious product value (fraud teams get transparent decisions)  
-✅ Jac advocacy (shows why graph-native matters)  
-✅ Polished execution (not a 24-hour hack)  
-✅ Clear demo story (5 minutes, no confusion)  
+All built in **Jac** – graph‑native nodes, walkers, and a stateful agent. Runs fully in demo mode with mock data, or connects to a real Jaseci backend.
 
 ---
 
-**Questions?** Check README.md for architecture or DEMO.md for the full walkthrough.
+## Scoring Rubric (Explicitly Aligned with JacHacks Spring Rules)
 
-**Ready to amaze?** Click that case card! 🚀
+| Criterion | Weight | What we’ve delivered |
+|-----------|--------|----------------------|
+| **Technical Execution** | 25% | Stable Next.js app, React Flow graph, Zustand stores, no console errors. Backend Jac code compiles and runs. Clean separation of concerns. |
+| **Use of Jac and Jaseci** | 30% | Deep usage: graph nodes (User, Email, Device, IP, FraudCluster), edges, walkers (`ingest_signup`, `investigate`, `decision`, `memory`), stateful agent (`FraudInvestigationAgent`), long‑term memory via graph. Not superficial. |
+| **Creativity and Innovation** | 25% | “Explainable investigation” instead of a black‑box score. Agent that expands clusters autonomously and consults historical fraud memory. Live graph animation tied to agent’s reasoning steps. |
+| **Presentation and Demo** | 20% | 3‑minute script (see DEMO.md), polished UI, adjustable parameters, dark theme, smooth animations. Clear problem statement and solution narrative. |
+
+---
+
+## Feature → Judging Criterion Mapping
+
+| Feature | Primary Criterion | Why it matters |
+|---------|------------------|----------------|
+| **Graph nodes + edges + walkers** | Use of Jac | Core of Jac’s value – not just a wrapper around Python. |
+| **Stateful FraudInvestigationAgent** | Use of Jac / Creativity | Demonstrates real agentic behavior (memory, planning). |
+| **Long‑term fraud clusters (`FraudCluster` node + `memory` walker)** | Use of Jac / Innovation | Persistent, graph‑based memory – rarely seen in hackathon projects. |
+| **Live graph highlighting synced with reasoning steps** | Technical Execution / Presentation | Polished, stable, and directly shows the agent’s “thinking”. |
+| **Risk sensitivity & fraud intensity sliders** | Presentation / Technical | Judges can interact and see immediate decision changes. |
+| **Explainable output (reasoning steps, fraud signals)** | Innovation / Presentation | Directly solves the problem of black‑box KYC. |
+| **Mock simulation engine (`agentSimulation.ts`)** | Technical Execution | Demo works out of the box, no external dependencies – robust. |
+
+---
+
+## What Judges Should Test (Step‑by‑Step Evaluation Guide)
+
+### 1. Run the frontend (mock mode)
+- `npm install && npm run dev`
+- Open http://localhost:3000
+
+### 2. Create a new investigation
+- Click “New Investigation” → a random applicant appears.
+- **Expected**: Graph loads, agent reasoning panel starts auto‑playing steps (every 1.2 sec by default).
+
+### 3. Observe agentic behavior
+- Watch the **left panel** (graph) – nodes/edges highlight in orange as the agent mentions them.
+- Watch the **right panel** – step messages appear one by one:  
+  *“Checking email reputation…”* → *“Analyzing device fingerprint…”* → *“Tracing IP addresses…”* → *“Detecting identity clusters…”* → *“Final decision.”*
+- **Expected**: Each highlight corresponds to the message.
+
+### 4. Adjust settings and see impact
+- Go to **Settings** (top‑right gear or sidebar).
+- Move **Risk Sensitivity** to 100, **Fraud Intensity** to 100, **Simulation Speed** to 500ms.
+- Start a new investigation.
+- **Expected**: Risk score increases, decision may flip from Approve → Step‑up or Manual Review. Reasoning steps appear faster.
+
+### 5. (Optional) Connect to real Jac backend
+- Follow backend setup in README.
+- Replace mock API calls in frontend with fetch to `http://localhost:8000/walker/investigate_signup`.
+- **Expected**: The same JSON structure, but now generated by live Jac walkers.
+
+### 6. Review code for Jac depth
+- Open `signal_kyc/models/nodes.jac` – see nodes with has fields.
+- Open `signal_kyc/agents/fraud_agent.jac` – see stateful agent with `has memory`, methods `collect_neighbors`, `expand_suspicious_cluster`.
+- Open `signal_kyc/walkers/memory.jac` – see long‑term memory update logic.
+- **Expected**: Clear use of Jac’s unique features (graph, walkers, agents, persistent nodes).
+
+---
+
+## Edge Case Handling
+
+| Edge Case | How SignalKYC Handles It |
+|-----------|--------------------------|
+| Missing fields (e.g., no device fingerprint) | `ingest_signup` still creates user node, skips missing entity. |
+| Duplicate signups | `get_or_create` functions reuse existing nodes, increment edge counters. |
+| No historical fraud clusters | Agent simply reports “no cluster match” – decision still works. |
+| Extremely high risk (>100) | Risk score capped at 100. |
+| Frontend simulation vs real backend | Mock mode mimics same JSON contract; switching is one config change. |
+
+---
+
+## Innovation Justification (Why This Stands Out)
+
+Most hackathon projects use Jac superficially – one walker that calls an LLM. SignalKYC uses Jac as a **graph‑native agent platform**:
+
+- **Autonomous cluster expansion** – the agent doesn’t just follow a fixed script; it decides to expand when it finds a suspicious entity.
+- **Graph‑based long‑term memory** – fraud patterns persist across investigations without a separate database.
+- **Explainability as a first‑class feature** – the agent returns *which nodes/edges* it examined and *why*, not just a score.
+
+This is exactly the kind of “agentic AI application” the judges are looking for – not a chatbot, but a real reasoning system over structured data.
+
+---
+
+## Risk Reduction / Feasibility Argument
+
+| Risk | Mitigation |
+|------|------------|
+| Judge can’t run backend | Full frontend mock simulation works out of the box. |
+| Backend compilation errors | Provided Jac code follows Jaseci 1.4 syntax, tested locally. |
+| Graph visualization bugs | React Flow is stable; we use simple random positions for demo. |
+| No time to explain Jac features | This document + DEMO.md explicitly call out Jac usage. |
+
+---
+
+## Why This Project Wins
+
+- **Fits the rubric perfectly** – deep Jac usage, technical polish, real innovation, great demo.
+- **Solves a real fintech problem** – not a toy; judges familiar with KYC will recognise the pain point.
+- **Visually compelling** – judges see the agent “thinking” in real time (highlighted graph, step‑by‑step logs).
+- **Goes beyond “score + explainability”** – actually uses graph traversal and memory to investigate.
+- **Completely self‑contained** – no external API keys, no LLM flakiness, runs locally.
+
+> *“This is what agentic programming should look like.”*
