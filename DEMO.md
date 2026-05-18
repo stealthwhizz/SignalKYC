@@ -1,316 +1,126 @@
-# SignalKYC Frontend - Demo Walkthrough Guide
+# SignalKYC – 3‑Minute Demo Script (Cinematic Pitch)
 
-## 🎯 Demo Script (3-5 Minutes)
-
-This guide walks you through the SignalKYC frontend to demonstrate real agent behavior, transparent decision-making, and graph-native fraud detection.
-
-### Opening
-"SignalKYC is a Jac-native agent that investigates onboarding fraud by linking identity signals into an explainable graph. Let me show you how it works."
+**Total time: 3:00**  
+*Narration cues in italics, timing in [brackets].*
 
 ---
 
-## 📱 Screen 1: Dashboard & Case Selection (30 seconds)
+## [0:00 – 0:10] Hook
 
-**What you see:**
-- Clean dark interface with SignalKYC branding
-- Quick stats: Total Cases (4), High Risk (2), Clean Cases (2)
-- Four case cards:
-  - **Bob Smith (HIGH RISK)** - Red badge, "Device reuse detected"
-  - **Carol Davis (HIGH RISK)** - Red badge, "Shared device cluster"
-  - **Alice Johnson (CLEAN)** - Green badge, "No risk signals"
-  - **Frank Chen (CLEAN)** - Green badge, "Verified profile"
+> *“Fraud teams don’t need another risk score. They need an **investigation**.”*
 
-**Demo Action:**
-"Let's start with a suspicious case. Bob Smith is a recent applicant."
-*Click on Bob Smith card*
+**[Screen: Dashboard with “New Investigation” button]**
 
-**Key Insight:**
-"Notice the color coding - red for high risk, green for clean. We can see at a glance which cases need attention."
+> *“Meet SignalKYC – an autonomous KYC agent that builds a live identity graph and walks suspicious connections, just like a human analyst would.”*
 
 ---
 
-## 🔍 Screen 2: Investigation Workspace - High Risk Case (2 minutes)
+## [0:10 – 0:40] Problem Framing
 
-**Layout: 3-column workspace**
+> *“Today, if you apply for a fintech account, your email, phone, device, and IP are checked in isolation. If one signal is suspicious, you might get a generic ‘manual review’ – but no one explains **why** or **what to do next**.”*
 
-### Left Column: Applicant Profile
-- Avatar with initials: "BS"
-- Name: "Bob Smith"
-- ID: "app_suspicious_001"
-- Submission time
-- Identity Details:
-  - Email: bob.smith+test@tempmail.com
-  - Phone: +1-415-555-0002
-  - Device: dev_reused_001
-  - IP: 198.51.100.5
+**[Show static screenshots of typical risk score UI]**
 
-**Demo Point 1:**
-"Here's the applicant. Notice the email - it's using a disposable service (tempmail.com) with an alias (+test). That's our first red flag."
+> *“Fraud rings exploit this fragmentation – they reuse devices, rotate IPs, and create synthetic identities. Traditional rules miss the links.”*
 
-### Left Column: Triggered Risk Signals
-**4 signals displayed with severity levels:**
-
-1. **DEVICE_REUSE** (HIGH - Red)
-   - "Device has been used by multiple applicants"
-   - Evidence: "Device ID dev_reused_001 found in 3 applications"
-
-2. **SHARED_EMAIL** (MEDIUM - Amber)
-   - "Email shows disposable service pattern"
-   - Evidence: "Email domain suggests temporary service: tempmail.com"
-
-3. **EMAIL_PATTERN** (LOW - Green)
-   - "Email contains alias pattern"
-   - Evidence: "Email format suggests aliasing: bob.smith+test@tempmail.com"
-
-4. **IP_GEO_MISMATCH** (MEDIUM - Amber)
-   - "IP country differs from applicant location"
-   - Evidence: "IP geolocates to Nigeria (NG) but applicant reports US location"
-
-**Demo Point 2:**
-"The system detected four signals:
-- Device reused across 3 applicants
-- Disposable email domain
-- Email aliasing pattern
-- Geographic mismatch: Nigeria IP from US applicant
-
-These weak signals alone might not be alarming, but together they paint a clear picture of fraud risk."
-
-### Center Column: Identity Graph
-**SVG visualization showing:**
-- Center: Applicant (APP) - Red node
-- Left: Device (DEV) - Orange node with dashed line
-- Right: Email (EML) - Orange node with dashed line
-- Top: IP Address (IP) - Orange node with dashed line
-- Dashed circle around Device indicating shared usage
-
-**Legend:**
-- Blue/cyan = Primary Applicant
-- Orange = Shared Signal (risky)
-- Red = Escalated Link
-
-**Demo Point 3:**
-"Here's the identity graph. The applicant is in the center. The connected nodes show which identity signals we've linked:
-- Device (reused with 2 other applicants)
-- Email (disposable pattern)
-- IP address (mismatched geography)
-
-This graph representation makes relationships explicit - we can see at a glance which signals are connected and risky."
-
-### Center Column: Investigation Timeline
-**5 investigation steps with visual markers:**
-
-1. ✓ "Ingesting applicant data"
-2. ✓ "Linking identity signals"
-3. ✓ "Evaluating risk: 4 signals triggered" (Red marker)
-4. ✓ "Investigating linked entities" (Red marker)
-5. ✓ "Decision: MANUAL REVIEW" (Red marker)
-
-**Demo Point 4:**
-"Here's the agent's investigation flow. Each step is explicit and traceable. The system isn't a black box - we can see exactly what it checked and why it reached this conclusion."
-
-### Right Column: Decision Panel
-**Large card with:**
-- Recommendation badge: "MANUAL REVIEW" (Red)
-- Risk Score: "7.0 / 20" (High)
-- Explanation: "High-risk signals detected (4 triggered). Recommend immediate manual review by fraud team."
-- Evidence list:
-  - "Device Reused: Device ID dev_reused_001 found in 3 applications"
-  - "Suspicious Email: Email domain suggests temporary service: tempmail.com"
-  - "Email Pattern Risk: Email format suggests aliasing: bob.smith+test@tempmail.com"
-  - "Geographic Mismatch: IP geolocates to Nigeria (NG) but applicant reports US location"
-
-### Right Column: Similar Historical Cases
-**Card showing:**
-- Case ID: "hist_2026_0142"
-- "Similar High Risk Profile"
-- Similarity: "87%"
-- Outcome: "Manual Review → Fraud Detected"
-
-**Demo Point 5:**
-"The system also checks historical cases. This applicant's signal profile is 87% similar to a case we reviewed before that was actually fraud. That increases confidence in the manual review recommendation."
-
-### Right Column: Linked Entities
-**Entity counts:**
-- DEVICE: 3 applicants
-- EMAIL: 1 usage
-- PHONE: 1 usage
-- SHARED SIGNALS: 2 linked with others
+> *“So we built SignalKYC around **graph‑native agentic investigation**.”*
 
 ---
 
-## Transition: Back to Dashboard
+## [0:40 – 2:15] Live Walkthrough
 
-**Demo Action:**
-*Click "← Back" button*
+### Step 1 – Start a new case
 
-"Now let's contrast this with a clean case."
+> *“Let’s investigate a real applicant.”*
 
----
+**[Click “New Investigation” → Investigation page loads with a graph]**
 
-## 📱 Screen 3: Investigation Workspace - Clean Case (1 minute)
-
-**Demo Action:**
-*Load "Alice Johnson" case*
-
-### Key Differences Visible:
-
-**Applicant Header:**
-- Green/teal styling instead of red
-- Avatar color different
-
-**Risk Signals:**
-- Empty container: "No risk signals triggered"
-
-**Timeline:**
-- Still shows 5 steps, but NO risk markers
-- All markers in green/neutral
-
-**Decision Panel:**
-- Recommendation: "APPROVE" (Green badge)
-- Risk Score: "0.0 / 20" (Low)
-- Explanation: "All risk signals are within acceptable thresholds. Case approved for onboarding."
-- No evidence list (clean case)
-
-**Graph:**
-- Same structure, but applicant in GREEN
-- Linked entities in GREEN
-- No dashed circle (no shared dangerous signals)
-
-**Demo Point 6:**
-"Notice how the entire interface changes color based on risk level. The graph is green instead of red. No risky signals were triggered. The decision is immediate: Approve.
-
-This contrast helps fraud analysts quickly understand the difference between a legitimate applicant (Alice) and a suspicious one (Bob)."
+> *“The frontend immediately builds an identity graph – user, email, phone, device, IP. But that’s just the canvas.”*
 
 ---
 
-## 🎓 Architecture Insights (30 seconds)
+### Step 2 – Agent starts reasoning (auto‑play)
 
-**Key to highlight:**
+> *“Now watch the agent work.”*
 
-1. **Graph-Native Design**
-   - Nodes: Applicant, Device, Email, Phone, IP
-   - Edges: Links between entities
-   - Makes relationships explicit
+**[Agent reasoning panel starts auto‑playing]**
 
-2. **Deterministic Signals (Non-LLM)**
-   - All fraud detection is rule-based
-   - Fast, auditable, explainable
-   - No black-box ML
+> *“Step 1: Checking email reputation. The graph highlights the email node.”*
 
-3. **Walkers** (Visible in investigation timeline)
-   - ingestion_walker: Load applicant
-   - linking_walker: Connect signals
-   - risk_evaluation_walker: Fire signals
-   - investigation_walker: Traverse risks
-   - memory_walker: Compare history
-   - decision_walker: Final recommendation
+**[Graph highlights email node in orange]**
 
-4. **Explainability**
-   - Every signal has evidence
-   - Timeline shows agent steps
-   - Decision includes full reasoning
+> *“Step 2: Device fingerprint analysis. It finds this device was previously marked suspicious – so it expands the investigation.”*
+
+**[Highlight device node, then also highlight other users sharing that device]**
+
+> *“Step 3: IP velocity check – nothing unusual here.”*
+
+> *“Step 4: Historical fraud clusters – oh, this device belongs to a known fraud ring from three months ago.”*
+
+**[Highlight FraudCluster node, show risk score jumping]**
+
+> *“Step 5: Final decision – **Step‑up verification** because the risk is medium but not yet certain fraud.”*
+
+**[Decision panel shows “STEP_UP” with explanation bullets]**
 
 ---
 
-## 💡 Why This Matters
+### Step 3 – Show interactivity (settings)
 
-**The Problem (What we solve):**
-- Traditional KYC tools produce fragmented signals
-- Black-box risk scores don't explain decisions
-- Teams waste time stitching data together
-- Analysts can't verify or trust recommendations
+> *“But what if our compliance team is more aggressive?”*
 
-**SignalKYC's Approach:**
-- All signals linked in a graph
-- Every decision is transparent and justified
-- Investigation flow is explicit and traceable
-- Fraud analysts can verify and adjust signals
+**[Click Settings → drag Risk Sensitivity to 100]**
 
-**The Demo Shows:**
-- Real agent behavior (walkers investigating systematically)
-- Graph reasoning (relationships reveal fraud patterns)
-- Transparent decisions (each signal with evidence)
-- Product polish (fintech-grade UI)
+> *“Start a new investigation – with the same signals, the agent now recommends **Manual Review**.”*
+
+**[Show decision change]**
+
+> *“Every parameter is adjustable – fraud intensity, simulation speed – so you can tune the agent to your risk appetite.”*
 
 ---
 
-## 📊 Key Metrics to Mention
+## [2:15 – 2:50] Backend Explanation (Brief, Technical)
 
-- **Response Time**: <1 second per case investigation
-- **Signals Detected**: 10 deterministic rules
-- **Decision Accuracy**: 100% reproducible (rule-based, not probabilistic)
-- **Explainability**: 100% (every signal and decision has evidence)
-- **False Positive Rate**: Controlled via tiered decisions (Approve / Step-up / Manual)
+> *“Under the hood, the backend is written entirely in **Jac** – Jaseci’s graph‑native agentic language.”*
 
----
+**[Show split screen: left = Jac code, right = graph]**
 
-## ❓ Expected Questions & Answers
+> *“We define nodes for every identity entity, edges for relationships, and a **stateful agent** that walks the graph.”*
 
-**Q: "How does this compare to traditional risk scoring?"**
-A: "Traditional tools give you a single risk score (like 75/100) without explaining why. We give you:
-- Specific triggered signals with evidence
-- The investigation flow (what we checked)
-- Historical case comparison
-- A decision recommendation with reasoning
-- All of it transparent and auditable"
+> *“The agent keeps working memory, expands suspicious clusters, and even updates **long‑term fraud clusters** so future investigations remember past patterns.”*
 
-**Q: "Can you add new signals?"**
-A: "Yes, very easily. Each signal is a deterministic function in signals.jac. To add a new rule, you write a function, return the evidence, and plug it into the risk_evaluation_walker. No retraining required."
-
-**Q: "Does this work for large volumes?"**
-A: "The MVP uses seed data, but the design scales. Each investigation is independent, so you can process cases in parallel. The graph model is efficient for relationship queries."
-
-**Q: "What's the false positive rate?"**
-A: "With the rule-based approach, there are no false positives - just decisions. For conservative fraud prevention, most applicants go to Manual Review or Step-up. In production, you'd weight the signals based on your fraud data to optimize the tradeoff."
+> *“All of this is exposed through simple walkers – `investigate_signup`, `graph`, `get_case` – that return structured JSON to the Next.js frontend.”*
 
 ---
 
-## 🚀 Next Steps (Brief Mention)
+## [2:50 – 3:00] Closing Statement
 
-If asked about production:
-- Connect to real KYC APIs (ID verification, email/phone validation)
-- Persistent graph database (Neo4j or similar)
-- Analyst feedback loop (use outcomes to refine signals)
-- Advanced behavioral signals (typing speed, session patterns)
-- Compliance reporting for regulators
+> *“SignalKYC turns KYC from a black‑box score into an **explainable, autonomous investigation** – reducing manual review costs and catching fraud rings that siloed checks would miss.”*
 
----
+> *“Built with Jac, for the future of agentic fintech.”*
 
-## ✅ Demo Checklist
+**[Screen: Final card with “SignalKYC” logo, GitHub repo URL, team names]**
 
-- [ ] Have both case cards ready to click
-- [ ] Know the 4 signals for Bob Smith case
-- [ ] Be able to contrast the UI colors (red vs green)
-- [ ] Explain the graph: central node with 3 linked entities
-- [ ] Point out the timeline: 5 investigation steps
-- [ ] Highlight the evidence in the decision panel
-- [ ] Show historical case similarity
-- [ ] Explain why this matters for fraud teams
-- [ ] Be ready to discuss architecture if asked
+> *“Thank you – and we’d love to show you the code.”*
 
 ---
 
-## 🎬 Time Budget
+## Timing Breakdown
 
-- Opening: 10 seconds
-- Dashboard: 30 seconds
-- Suspicious case deep dive: 2 minutes
-- Clean case contrast: 1 minute
-- Architecture/Q&A: 30 seconds-1 minute
-
-**Total: 4-5 minutes**
-
-Perfect for a hackathon demo slot!
+| Section | Duration |
+|---------|----------|
+| Hook + problem | 0:00 – 0:40 (40s) |
+| Live walkthrough (auto‑play steps) | 0:40 – 2:15 (95s) |
+| Backend technical snippet | 2:15 – 2:50 (35s) |
+| Closing statement | 2:50 – 3:00 (10s) |
 
 ---
 
-## 📸 Visual Notes
+## What to Prepare Before Recording
 
-- **Color coding is key**: Red = high risk, Green = clean, Amber = medium
-- **Graph visualization immediately signals complexity**: The linked entities show why fraud detection needs relationships
-- **Timeline shows transparency**: Judges see the agent's investigation steps
-- **Side-by-side comparison** (Bob vs Alice) makes the value proposition obvious
+- **Browser** open to localhost:3000 (dev server running).
+- **Settings** pre‑set to default (50/50/1200ms).
+- **No backend needed** – mock simulation mode is on.
+- **Screen recording** with cursor visible.
+- **Optional**: Show a quick glance at `fraud_agent.jac` or `nodes.jac` during backend explanation.
 
----
-
-**SignalKYC**: Making fintech onboarding faster, smarter, and transparent. 🔍
