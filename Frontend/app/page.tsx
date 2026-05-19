@@ -4,8 +4,9 @@
 import { Button } from '@/components/ui/Button'
 import OverviewCards from '@/components/dashboard/OverviewCards'
 import RecentInvestigations from '@/components/dashboard/RecentInvestigations'
-import { Plus } from 'lucide-react'
+import { Plus, Play } from 'lucide-react'
 import { useRouter } from 'next/navigation'
+import Link from 'next/link'
 
 export default function Dashboard() {
   const router = useRouter()
@@ -21,9 +22,16 @@ export default function Dashboard() {
           <h1 className="text-3xl font-bold tracking-tight">SignalKYC Dashboard</h1>
           <p className="text-muted-foreground">Agentic fraud investigation platform</p>
         </div>
-        <Button onClick={startNewInvestigation}>
-          <Plus className="mr-2 h-4 w-4" /> New Investigation
-        </Button>
+        <div className="flex gap-3">
+          <Link href="/demo">
+            <Button variant="outline">
+              <Play className="mr-2 h-4 w-4" /> Live Demo
+            </Button>
+          </Link>
+          <Button onClick={startNewInvestigation}>
+            <Plus className="mr-2 h-4 w-4" /> New Investigation
+          </Button>
+        </div>
       </div>
       <OverviewCards />
       <RecentInvestigations />

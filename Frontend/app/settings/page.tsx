@@ -4,23 +4,15 @@
 import { useSettingsStore } from '@/store/settingsStore'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/Card'
 import { Slider } from '@/components/ui/Slider'
-import { Label } from '@/components/ui/Label' // Not defined previously – we'll create a simple Label component
+import { Label } from '@/components/ui/Label'
 import { Button } from '@/components/ui/Button'
-import { toast } from 'sonner' // optional; we can use window alert or simple console
-
-// Simple Label component if not already present
-const Label = ({ children, htmlFor, className }: { children: React.ReactNode; htmlFor?: string; className?: string }) => (
-  <label htmlFor={htmlFor} className={`text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 ${className || ''}`}>
-    {children}
-  </label>
-)
 
 export default function SettingsPage() {
   const { riskSensitivity, fraudIntensity, simulationSpeed, setRiskSensitivity, setFraudIntensity, setSimulationSpeed } = useSettingsStore()
 
   const handleSave = () => {
     // Settings are persisted automatically via Zustand persist middleware
-    toast?.success?.('Settings saved') || alert('Settings saved')
+    alert('Settings saved')
   }
 
   return (

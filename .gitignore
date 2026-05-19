@@ -1,0 +1,27 @@
+# Claude
+.claude/
+
+# Node
+node_modules/
+Frontend/node_modules/
+landing/node_modules/
+
+# Next.js
+Frontend/.next/
+Frontend/out/
+
+# Vite build output
+landing/dist/
+
+# Env files
+.env
+.env.local
+.env.*.local
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS
+.DS_Store
+Thumbs.db

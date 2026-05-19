@@ -662,7 +662,7 @@ graph LR
 
 ---
 
-## 🥇 Why This Wins
+## Why This Wins
 
 SignalKYC is not a wrapper. It is not a chatbot. It is not a demo with one hardcoded response.
 
