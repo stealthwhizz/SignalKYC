@@ -1,5 +1,6 @@
 # Claude
 .claude/
+.jac/
 
 # Node
 node_modules/

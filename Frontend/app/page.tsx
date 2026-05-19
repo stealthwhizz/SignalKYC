@@ -4,6 +4,7 @@
 import { Button } from '@/components/ui/Button'
 import OverviewCards from '@/components/dashboard/OverviewCards'
 import RecentInvestigations from '@/components/dashboard/RecentInvestigations'
+import LiveFeed from '@/components/dashboard/LiveFeed'
 import { Plus, Play } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
@@ -34,6 +35,7 @@ export default function Dashboard() {
         </div>
       </div>
       <OverviewCards />
+      <LiveFeed />
       <RecentInvestigations />
     </div>
   )

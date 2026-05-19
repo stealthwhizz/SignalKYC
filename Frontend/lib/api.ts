@@ -102,6 +102,12 @@ export async function investigateSignup(input: InvestigateInput): Promise<Invest
   return callWalker<InvestigateResult>('investigate_signup', input)
 }
 
+export async function ingestSignup(
+  input: InvestigateInput & { source?: string }
+): Promise<InvestigateResult> {
+  return callWalker<InvestigateResult>('ingest_signup', { source: 'webhook', ...input })
+}
+
 export async function isBackendAlive(): Promise<boolean> {
   try {
     const res = await fetch(`${JAC_BASE}/`, { signal: AbortSignal.timeout(3000) })
