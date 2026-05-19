@@ -111,4 +111,4 @@ This is the deepest possible integration of Jac's unique capabilities into a coh
 
 ---
 
-*Full technical documentation: [README.md](./README.md) · Judge navigation guide: [JUDGES.md](./JUDGES.md) · Demo script: [DEMO.md](./DEMO.md)*
+*Full technical documentation: [README.md](./README.md) · Judge navigation guide: [JUDGES.md](./JUDGES.md) ·*
