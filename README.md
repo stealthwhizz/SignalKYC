@@ -18,7 +18,7 @@
 
 **SignalKYC** is a graph-native, agentic KYC fraud investigation platform that replaces static pass/fail identity checks with autonomous multi-hop graph traversal, real-time entity linking, and explainable AI-generated case decisions — built end-to-end in **Jac**, the world's first agentic programming language.
 
-**[Live Demo](#demo-flow) · [Architecture](#architecture) · [Installation](#installation) · [Judges Guide](./JUDGES.md) · [Demo Script](./DEMO.md)**
+**[▶ Project Video](https://www.youtube.com/watch?v=mfNhP3N3Lvo) · [▶ Live Demo Video](https://youtu.be/Xmv6i9x8tbE) · [Architecture](#architecture) · [Installation](#installation)**
 
 </div>
 
